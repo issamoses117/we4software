@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Books - We 4 Software Company</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://checkout.flutterwave.com/v3.js"></script>
+<script>
+function payWithFlutterwave(bookTitle, amount) {
+  FlutterwaveCheckout({
+    public_key: "FLWPUBK_TEST-dc75738ab46466255bcc846e769ac928-X",
+    tx_ref: "we4soft_" + Math.floor((Math.random() * 10) + 1),
+    amount: amount,
+    currency: "SLL",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: "customer@example.com",
+      phonenumber: "23276123456",
+      name: "We4 Customer",
+    },
+    customizations: {
+      title: "We 4 Software Company",
+      description: "Purchase of " + bookTitle,
+      logo: "https://we4software.com/logo.png",
+    },
+    callback: function (data) {
+      alert("Payment successful! Transaction ID: " + data.transaction_id);
+    },
+    onclose: function() {
+      alert("Payment cancelled.");
+    },
+  });
+}
+</script>
+</head>
+<body>
+<header>
+  <h1>We 4 Software Company - Books</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html" class="active">Books</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="book-list">
+    <h2>Books to Read and Buy</h2>
+    <p>Explore our curated collection of essential tech books to boost your knowledge and career.</p>
+    <ul>
+      <li>
+        <strong>CompTIA A+</strong><br />
+        Introduction to computer hardware and troubleshooting.<br />
+        <button class="buy-button" onclick="payWithFlutterwave('CompTIA A+', 10)">Buy Now (SLL 100,000)</button>
+      </li>
+      <li>
+        <strong>CompTIA Network+</strong><br />
+        Fundamentals of networking concepts and protocols.<br />
+        <button class="buy-button" onclick="payWithFlutterwave('CompTIA Network+', 12)">Buy Now (SLL 120,000)</button>
+      </li>
+      <li>
+        <strong>Software Engineering</strong><br />
+        Comprehensive guide to software design and development.<br />
+        <button class="buy-button" onclick="payWithFlutterwave('Software Engineering', 15)">Buy Now (SLL 150,000)</button>
+      </li>
+      <li>
+        <strong>Cybersecurity Essentials</strong><br />
+        Learn to protect systems from cyber threats.<br />
+        <button class="buy-button" onclick="payWithFlutterwave('Cybersecurity Essentials', 13)">Buy Now (SLL 130,000)</button>
+      </li>
+      <li>
+        <strong>Web Development</strong><br />
+        Build modern, responsive websites.<br />
+        <button class="buy-button" onclick="payWithFlutterwave('Web Development', 11)">Buy Now (SLL 110,000)</button>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <p>Contact us on WhatsApp: <a href="https://wa.me/23274755059">Chat Now</a></p>p>
+   <p>OR <a href="https://wa.me/23277882762">whatsApp Now</a></p>
+  <p>© 2025 We 4 Software Company</p>
+</footer>
+</body>
+</html>
